@@ -13,11 +13,6 @@
     />
     <div class="d-flex justify-end pt-8">
       <o-button
-        text="Cancel"
-        outlined
-        @click="$router.go(-1)"
-      />
-      <o-button
         class="mx-2"
         text="Delete"
         color="red"

@@ -33,6 +33,7 @@
           <o-button
             text="Create "
             color="primary"
+            icon="mdi-content-save"
             @click="create"
           />
 
