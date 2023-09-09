@@ -2,7 +2,6 @@
   <v-app :dark="false">
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
       :clipped="clipped"
       fixed
       app
@@ -30,7 +29,12 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title @click="$router.push('/')">{{ title }}</v-toolbar-title>
+      <v-toolbar-title
+        @click="$router.push('/')"
+        class="cursor-pointer"
+      >
+        {{ title }}
+      </v-toolbar-title>
       <v-spacer />
     </v-app-bar>
     <v-main>
@@ -61,3 +65,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.cursor-pointer {
+  cursor: pointer
+}
+</style>
