@@ -13,7 +13,7 @@
       with-actions
       with-filter
       @deleteRow="deleteNetworkHandler"
-      @editRow="editGraph"
+      @editeRow="editGraph"
       @viewRow="viewGraph"
     />
 

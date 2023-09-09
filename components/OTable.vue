@@ -68,7 +68,7 @@
 <script>
 export default {
   name: "OTable",
-  emits: ['deleteRow', 'updateRow', 'viewRow'],
+  emits: ['deleteRow', 'editeRow', 'viewRow'],
   props: {
     withActions: {
       default: false,
@@ -112,7 +112,7 @@ export default {
       this.$emit('deleteRow', item)
     },
     updateRow(item){
-      this.$emit('editRow', item)
+      this.$emit('editeRow', item)
     },
     viewRow(item){
       this.$emit('viewRow', item)

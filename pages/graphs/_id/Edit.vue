@@ -22,7 +22,7 @@
         with-actions
         with-filter
         no-view
-        @editRow="openNodeModal(true, $event)"
+        @editeRow="openNodeModal(true, $event)"
         @deleteRow="removeNode"
       />
     </div>
@@ -42,7 +42,7 @@
         with-actions
         no-view
         with-filter
-        @editRow="openRelationshipsModal(true, $event)"
+        @editeRow="openRelationshipsModal(true, $event)"
         @deleteRow="removeRelationship"
       />
     </div>
