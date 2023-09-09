@@ -37,7 +37,7 @@ export default {
           value: 'tooltip',
         },
         {
-          text: 'Neighbors',
+          text: 'Npde neighbors',
           value: 'neighbors',
         },
       ]
