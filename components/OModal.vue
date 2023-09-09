@@ -8,7 +8,7 @@
         <h5 class="flex">
           {{ title }}
         </h5>
-        <v-btn text flat x-small rounded fab>
+        <v-btn text  x-small rounded fab>
           <v-icon
             class="cursor-pointer"
             color="black"

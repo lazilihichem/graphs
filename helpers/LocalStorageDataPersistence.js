@@ -12,9 +12,7 @@ class LocalStorageDataPersistence {
   }
 
   show(resource, id){
-    console.log('in persistence', resource, id)
     let resourceData = localStorage.getItem(resource)
-    console.log(resourceData)
     if(resourceData){
       resourceData = JSON.parse(resourceData)
       return resourceData.find(row => row.id === id)
