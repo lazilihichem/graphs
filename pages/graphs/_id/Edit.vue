@@ -136,7 +136,7 @@ export default {
       this.relationships = this.network.relationships
     },
     openNodeModal(edit = false, form = {}){
-      this.toEdit = Edit
+      this.toEdit = edit
       this.nodeForm = form
       this.openNodeForm = true
     },
@@ -152,7 +152,7 @@ export default {
       this.relationships = this.relationships.filter((relation) => ![relation.from, relation.to].includes(nodeToDelete.id))
     },
     openRelationshipsModal(edit = false, form = {}){
-      this.toEdit = Edit
+      this.toEdit = edit
       this.relationshipForm = form
       this.openRelationshipsForm = true
     },
@@ -178,6 +178,7 @@ export default {
         to: relation.to
       }))
       graphsController.updateNetwork(this.network.id, this.network)
+      this.$router.push(`/graphs/${this.network.id}/statistics`)
     }
   }
 }
