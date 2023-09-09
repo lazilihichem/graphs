@@ -56,12 +56,12 @@ export default {
     fromNodes(){
       return this.nodes
         .filter(node => node.id !== this.form.to)
-        .map(node => ({text: node.tooltip, value: node.id}))
+        .map(node => ({text: node.id, value: node.id}))
     },
     toNodes(){
       return this.nodes
         .filter(node => node.id !== this.form.from)
-        .map(node => ({text: node.tooltip, value: node.id}))
+        .map(node => ({text: node.id, value: node.id}))
     },
     open: {
       get(){

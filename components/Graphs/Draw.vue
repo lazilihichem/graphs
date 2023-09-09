@@ -32,7 +32,8 @@ export default {
     mappedNodes(){
       return this.nodes?.map(node => ({
         ...node,
-        label: node.tooltip,
+        label: node.id.toString(),
+        title: node.tooltip,
         shape: 'circle'
       })) ?? []
     }

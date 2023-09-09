@@ -11,12 +11,12 @@
         @submit.prevent="submit"
         lazy-validation
       >
-        <v-text-field
+        <v-textarea
           v-model="form.tooltip"
           outlined
           label="Node tooltip"
           :rules="requiredRules"
-        ></v-text-field>
+        ></v-textarea>
         <button ref="submitBtn" class="hidden" />
       </v-form>
     </template>
