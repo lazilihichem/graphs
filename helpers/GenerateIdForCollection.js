@@ -1,7 +1,7 @@
 const generateIdForCollection = (collection) =>{
   let id = 1
   collection.forEach(row => {
-    if(row.id > id)
+    if(row.id >= id)
       id = row.id + 1
   })
 
