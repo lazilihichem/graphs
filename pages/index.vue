@@ -2,7 +2,7 @@
   <div class="d-flex flex-column gap-4">
 
     <o-page-header
-      text="Graphs list"
+      text="Networks list"
       with-action
       @actionBtnClicked="addNewGraph"
     />

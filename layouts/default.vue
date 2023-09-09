@@ -30,7 +30,7 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-toolbar-title @click="$router.push('/')">{{ title }}</v-toolbar-title>
       <v-spacer />
     </v-app-bar>
     <v-main>
@@ -51,12 +51,12 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Graphs',
+          icon: 'mdi-graph',
+          title: 'networks',
           to: '/'
         },
       ],
-      title: 'My awesome Graphs app'
+      title: 'My awesome networks app'
     }
   }
 }
