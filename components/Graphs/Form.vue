@@ -10,13 +10,15 @@
         <v-text-field
           v-model="form.name"
           label="Name"
+          outlined
           :rules="nameRules"
         ></v-text-field>
-        <v-text-field
+        <v-textarea
           v-model="form.description"
           label="Description"
+          outlined
           :rules="descriptionRules"
-        ></v-text-field>
+        ></v-textarea>
         <div
           v-if="!onEdit"
           class="d-flex justify-end">

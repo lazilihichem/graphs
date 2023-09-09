@@ -13,6 +13,7 @@
       >
         <v-text-field
           v-model="form.tooltip"
+          outlined
           label="Node tooltip"
           :rules="requiredRules"
         ></v-text-field>
@@ -67,6 +68,7 @@ export default {
       if(!this.valid)
         return
 
+      this.$refs.form.resetValidation()
       this.$emit('validated', this.form)
     },
     triggerSubmit(){
