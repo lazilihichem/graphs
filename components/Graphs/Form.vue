@@ -22,19 +22,20 @@
         <div
           v-if="!onEdit"
           class="d-flex justify-end">
-          <v-btn
+          <o-button
             class="mx-2"
+            text="Create and draw"
+            color="primary"
+            outlined
             @click="createAndDraw"
+          />
+
+          <o-button
+            text="Create "
             color="primary"
-          >
-            Create and Draw
-          </v-btn>
-          <v-btn
             @click="create"
-            color="primary"
-          >
-            Create
-          </v-btn>
+          />
+
         </div>
       </v-form>
     </div>
