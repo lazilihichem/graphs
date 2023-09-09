@@ -53,7 +53,7 @@ export default {
             .filter(currentNode => this.network.relationships.find(relationship =>
               (relationship.from === currentNode.id && relationship.to === node.id) ||  (relationship.from === node.id && relationship.to === currentNode.id)))
             .map(currentNode => currentNode.id)
-            .join(', ')
+            .join(', ') || '/'
         }
       })
     }
