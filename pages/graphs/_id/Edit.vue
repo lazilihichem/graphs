@@ -42,7 +42,7 @@
         with-actions
         no-view
         with-filter
-        @updateRow="openRelationshipsModal(true, $event)"
+        @editRow="openRelationshipsModal(true, $event)"
         @deleteRow="removeRelationship"
       />
     </div>
@@ -50,6 +50,7 @@
     <nodes-node-form
       v-model="openNodeForm"
       :form="nodeForm"
+      :on-edit="toEdit"
       @validated="saveNode"
     />
 
@@ -77,6 +78,12 @@
 
     <v-divider />
     <div class="d-flex justify-end pt-8">
+      <o-button
+        text="Reset network"
+        outlined
+        class="mx-2"
+        @click="fetchNetwork($route.params.id)"
+      />
       <o-button
         text="Save network"
         @click="saveNetwork"
@@ -135,11 +142,11 @@ export default {
     }
   },
   mounted(){
-    this.fetchNetwork(parseInt(this.$route.params.id))
+    this.fetchNetwork(this.$route.params.id)
   },
   methods: {
     fetchNetwork(id) {
-      this.network = graphsController.networkDetails(id)
+      this.network = graphsController.networkDetails(parseInt(id))
       this.nodes = this.network.nodes
       this.relationships = this.network.relationships
     },
@@ -166,18 +173,18 @@ export default {
     },
     saveRelationship(relationship){
       this.openRelationshipsForm = false
-      if(this.relationshipExists(relationship)){
+      if(this.toEdit)
+        return
+
+      if( this.relationshipExists(relationship)){
         this.relationshipExistsSnackbar = true
-        return;
+        return
       }
 
-      if(!this.toEdit){
-        const from_name = this.nodes.find((node) => node.id === relationship.from)?.tooltip
-        const to_name = this.nodes.find((node) => node.id === relationship.to)?.tooltip
+      const from_name = this.nodes.find((node) => node.id === relationship.from)?.tooltip
+      const to_name = this.nodes.find((node) => node.id === relationship.to)?.tooltip
 
-        this.relationships.push({...relationship, from_name, to_name })
-      }
-
+      this.relationships.push({...relationship, from_name, to_name })
     },
     relationshipExists(relationship){
       return this.relationships.findIndex((relation) => relation.from === relationship.from && relation.to === relationship.to) > -1
