@@ -173,7 +173,10 @@ export default {
     },
     saveNetwork(){
       this.network.nodes = this.nodes
-      this.network.relationships = this.relationships
+      this.network.relationships = this.relationships.map(relation => ({
+        from: relation.from,
+        to: relation.to
+      }))
       graphsController.updateNetwork(this.network.id, this.network)
     }
   }
