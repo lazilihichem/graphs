@@ -81,8 +81,13 @@
         icon="mdi-content-save"
       />
     </div>
+    <v-snackbar
+      v-model="relationshipExistsSnackbar"
+      :timeout="4000"
+    >
+      this relationship already exists
+    </v-snackbar>
   </v-form>
-
 </template>
 
 <script>
@@ -123,7 +128,8 @@ export default {
       relationshipForm: {},
       toEdit: false,
       openNodeForm: false,
-      openRelationshipsForm: false
+      openRelationshipsForm: false,
+      relationshipExistsSnackbar: false,
     }
   },
   mounted(){
@@ -158,6 +164,10 @@ export default {
     },
     saveRelationship(relationship){
       this.openRelationshipsForm = false
+      if(this.relationships.findIndex((relation) => relation.from === relationship.from && relation.to === relationship.to) > -1){
+        this.relationshipExistsSnackbar = true
+        return;
+      }
       if(!this.toEdit){
         const from_name = this.nodes.find((node) => node.id === relationship.from)?.tooltip
         const to_name = this.nodes.find((node) => node.id === relationship.to)?.tooltip
