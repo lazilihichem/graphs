@@ -1,6 +1,9 @@
 <template>
   <div>
-    <o-page-header text="Create a new network" />
+    <o-page-header
+      text="Create a new network"
+      with-back-btn
+    />
     <graphs-form :form="{}" @validated="saveGraph"/>
   </div>
 </template>
