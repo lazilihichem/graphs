@@ -5,7 +5,18 @@
     :items="rows"
     item-value="name"
     class="elevation-1"
+    :search="search"
+    :custom-filter="filter"
   >
+    <template
+      v-if="withFilter"
+      v-slot:top>
+      <v-text-field
+        v-model="search"
+        label="Search"
+        class="mx-4"
+      ></v-text-field>
+    </template>
     <template v-slot:item.actions="{ item }">
       <div class="d-flex align-center justify-center">
         <v-btn
@@ -76,6 +87,17 @@ export default {
     columns: {
       required: true,
       type: Array,
+    },
+    withFilter: {
+      required: false,
+      type: Boolean,
+      default: Boolean,
+    }
+  },
+  data(){
+    return {
+      search: '',
+      searchKey: 'name',
     }
   },
   computed: {
@@ -94,7 +116,12 @@ export default {
     },
     viewRow(item){
       this.$emit('viewRow', item)
-    }
+    },
+    filter (value, search) {
+      return value != null &&
+        search != null &&
+        value.toString().toLowerCase().indexOf(search.toLowerCase()) !== -1
+    },
   }
 }
 </script>

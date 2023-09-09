@@ -11,6 +11,7 @@
       :rows="networks"
       :columns="headers"
       with-actions
+      with-filter
       @deleteRow="deleteNetworkHandler"
       @editRow="editGraph"
       @viewRow="viewGraph"
@@ -29,13 +30,7 @@ import graphController from "~/controllers/GraphsController";
 export default {
   name: 'IndexPage',
   data: () => ({
-    networks: [
-      {
-        id: 1,
-        name: 'first graph',
-        description: 'my awesome graph description',
-      }
-    ],
+    networks: [],
     headers: [
       {
         text: 'Id',
