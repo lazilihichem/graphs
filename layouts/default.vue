@@ -56,7 +56,7 @@ export default {
           to: '/'
         },
       ],
-      title: 'My awesome graphs app'
+      title: 'My awesome Graphs app'
     }
   }
 }
