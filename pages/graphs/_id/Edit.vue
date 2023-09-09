@@ -4,7 +4,7 @@
       :text="`Edit ${network.name}`"
       with-action
       action-text="View Statistics"
-      action-icon="mdi-check"
+      action-icon="mdi-poll"
       with-back-btn
       @actionBtnClicked="seeStatistics"
     />
@@ -20,8 +20,9 @@
         :columns="nodesColumns"
         :rows="nodes"
         with-actions
+        with-filter
         no-view
-        @updateRow="openNodeModal(true, $event)"
+        @editRow="openNodeModal(true, $event)"
         @deleteRow="removeNode"
       />
     </div>
@@ -40,6 +41,7 @@
         :rows="relationships"
         with-actions
         no-view
+        with-filter
         @updateRow="openRelationshipsModal(true, $event)"
         @deleteRow="removeRelationship"
       />
@@ -164,16 +166,21 @@ export default {
     },
     saveRelationship(relationship){
       this.openRelationshipsForm = false
-      if(this.relationships.findIndex((relation) => relation.from === relationship.from && relation.to === relationship.to) > -1){
+      if(this.relationshipExists(relationship)){
         this.relationshipExistsSnackbar = true
         return;
       }
+
       if(!this.toEdit){
         const from_name = this.nodes.find((node) => node.id === relationship.from)?.tooltip
         const to_name = this.nodes.find((node) => node.id === relationship.to)?.tooltip
 
         this.relationships.push({...relationship, from_name, to_name })
       }
+
+    },
+    relationshipExists(relationship){
+      return this.relationships.findIndex((relation) => relation.from === relationship.from && relation.to === relationship.to) > -1
     },
     removeRelationship(relationshipToDelete){
       this.relationships = this.relationships.filter(relationship => relationship.from !== relationshipToDelete.from || relationship.to !== relationshipToDelete.to)
@@ -187,6 +194,7 @@ export default {
         from: relation.from,
         to: relation.to
       }))
+
       graphsController.updateNetwork(this.network.id, this.network)
       this.$router.push(`/graphs/${this.network.id}/statistics`)
     }
