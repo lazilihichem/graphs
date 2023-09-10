@@ -2,7 +2,11 @@
   <div>
     <o-page-header
       text="Network details"
+      with-action
       with-back-btn
+      action-text="View Statistics"
+      action-icon="mdi-poll"
+      @actionBtnClicked="seeStatistics"
      />
     <v-divider></v-divider>
     <graphs-graph-details :network="network" />
@@ -63,7 +67,10 @@ export default {
     },
     goToEdit(){
       return this.$router.push(`/graphs/${this.network.id}/edit`)
-    }
+    },
+    seeStatistics(){
+      this.$router.push(`/graphs/${this.network.id}/statistics`)
+    },
   }
 }
 </script>
