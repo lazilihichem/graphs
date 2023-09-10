@@ -17,7 +17,7 @@ class DateFormatter{
     minutes = minutes.length > 1 ? minutes : `0${minutes}`;
 
 
-    return `${month}/${day}/${year} ${date.getHours()}:${minutes}`;
+    return `${day}/${month}/${year} ${date.getHours()}:${minutes}`;
   }
 }
 
